@@ -3,6 +3,13 @@
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Entries say what changes for a
 consuming site.
 
+## [0.1.2](https://github.com/ydongy/sitekit/compare/v0.1.1...v0.1.2) (2026-10-12)
+
+
+### Fixed
+
+* **preview:** use the normalize-and-prefix check and encode the redirect ([#10](https://github.com/ydongy/sitekit/issues/10)) ([a981a25](https://github.com/ydongy/sitekit/commit/a981a25dcb1ed19c1a2fea046ebabfcb58261005))
+
 ## [0.1.1](https://github.com/ydongy/sitekit/compare/v0.1.0...v0.1.1) (2026-10-12)
 
 
