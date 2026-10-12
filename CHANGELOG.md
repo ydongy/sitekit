@@ -3,6 +3,13 @@
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Entries say what changes for a
 consuming site.
 
+## [0.1.1](https://github.com/ydongy/sitekit/compare/v0.1.0...v0.1.1) (2026-10-12)
+
+
+### Fixed
+
+* **preview:** keep request paths inside public/ and sanitize redirects ([#8](https://github.com/ydongy/sitekit/issues/8)) ([17124ca](https://github.com/ydongy/sitekit/commit/17124cab3ad401b710104070bf383fd4df53a473))
+
 ## [0.1.0](https://github.com/ydongy/sitekit/releases/tag/v0.1.0) (2026-10-12)
 
 ### Added
