@@ -6,12 +6,28 @@
       "package-name": "sitekit",
       "changelog-path": "CHANGELOG.md",
       "changelog-sections": [
-        { "type": "feat", "section": "Added" },
-        { "type": "fix", "section": "Fixed" },
-        { "type": "perf", "section": "Performance" },
-        { "type": "refactor", "section": "Changed" },
-        { "type": "docs", "section": "Documentation" }
-      ]
+        {
+          "type": "feat",
+          "section": "Added"
+        },
+        {
+          "type": "fix",
+          "section": "Fixed"
+        },
+        {
+          "type": "perf",
+          "section": "Performance"
+        },
+        {
+          "type": "refactor",
+          "section": "Changed"
+        },
+        {
+          "type": "docs",
+          "section": "Documentation"
+        }
+      ],
+      "include-component-in-tag": false
     }
   }
 }

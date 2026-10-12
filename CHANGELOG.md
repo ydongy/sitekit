@@ -3,7 +3,7 @@
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Entries say what changes for a
 consuming site.
 
-## [Unreleased]
+## [0.1.0](https://github.com/ydongy/sitekit/releases/tag/v0.1.0) (2026-10-12)
 
 ### Added
 - Shared page structure, checks, preview server and `vendor.sh`.
@@ -12,3 +12,6 @@ consuming site.
 - A release entry may omit its title; a legal page may omit its last-updated line.
 - The preview server answers HEAD requests like GET.
 - A release may keep its changes in `groups` (added, changed, fixed, removed), shown under headings from `changelog.groups.<kind>` of the copy. Releases with a flat `items` list render as before, byte for byte.
+
+### Documentation
+- Bilingual README (English and Simplified Chinese) following the open-source layout.
