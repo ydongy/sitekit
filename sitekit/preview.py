@@ -4,11 +4,12 @@ de/index.html and unknown paths get 404.html (there are no redirects: every page
 
     python3 scripts/sitekit/preview.py [port]      # default 8765
 """
+import os
 import posixpath
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 
 PUB = Path(__file__).resolve().parent.parent.parent / "public"  # scripts/sitekit/ -> repository root
 
@@ -21,10 +22,11 @@ def resolve(url_path: str):
     clean = posixpath.normpath(path)
     if path.endswith("/") and clean != "/":
         clean += "/"
-    target = (PUB / clean.lstrip("/")).resolve()
-    if target != PUB and PUB not in target.parents:
+    base = os.path.realpath(PUB)
+    full = os.path.normpath(os.path.join(base, clean.lstrip("/")))
+    if full != base and not full.startswith(base + os.sep):
         return None
-    return clean, target
+    return clean, Path(full)
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -54,7 +56,7 @@ class Handler(SimpleHTTPRequestHandler):
         path, target = resolved
         if target.is_dir() and not path.endswith("/"):
             self.send_response(301)
-            self.send_header("Location", path + "/")  # normalized, inside public/, no control characters
+            self.send_header("Location", quote(path + "/"))  # normalized, inside public/, percent-encoded
             self.end_headers()
             return
         page = target.with_name(target.name + ".html")
