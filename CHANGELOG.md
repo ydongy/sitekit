@@ -3,6 +3,13 @@
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Entries say what changes for a
 consuming site.
 
+## [0.1.1](https://github.com/ydongy/sitekit/compare/sitekit-v0.1.0...sitekit-v0.1.1) (2026-10-12)
+
+
+### Documentation
+
+* bilingual README following the open-source layout ([#1](https://github.com/ydongy/sitekit/issues/1)) ([90d533b](https://github.com/ydongy/sitekit/commit/90d533bb29a86d603a0ca0279f9e36547cbb0ca2))
+
 ## [Unreleased]
 
 ### Added
