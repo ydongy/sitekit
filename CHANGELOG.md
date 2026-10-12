@@ -3,6 +3,13 @@
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Entries say what changes for a
 consuming site.
 
+## [0.1.3](https://github.com/ydongy/sitekit/compare/v0.1.2...v0.1.3) (2026-10-12)
+
+
+### Fixed
+
+* **preview:** use guards that code scanning recognizes ([#13](https://github.com/ydongy/sitekit/issues/13)) ([237ccf2](https://github.com/ydongy/sitekit/commit/237ccf25c297be6844e006f6b48e8ebb0bdb0bbd))
+
 ## [0.1.2](https://github.com/ydongy/sitekit/compare/v0.1.1...v0.1.2) (2026-10-12)
 
 
