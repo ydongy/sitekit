@@ -1,4 +1,3 @@
-<!-- template: adr-index.md v2 -->
 # Architecture Decision Records
 
 Each record covers one decision: context, decision, cost. A reversed decision keeps its file: write a new
@@ -11,6 +10,6 @@ record and mark the old one "superseded by NNNN".
 | [0001](0001-vendored-copy.md) | Consumers vendor a copy instead of fetching at build time | accepted |
 | [0002](0002-hooks-not-forks.md) | Per-product differences are hooks, not forks | accepted |
 
-## Record template
+## Record format
 
-See `handbook/templates/common/adr.md` in the ydongy handbook.
+Title, status, date, related records, then Context, Decision, Cost and Revisit triggers. See the existing records.

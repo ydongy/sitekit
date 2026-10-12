@@ -1,4 +1,3 @@
-<!-- template: adr.md v1 -->
 # 0002 Per-product differences are hooks, not forks
 
 - Status: accepted

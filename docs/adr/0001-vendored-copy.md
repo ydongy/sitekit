@@ -1,4 +1,3 @@
-<!-- template: adr.md v1 -->
 # 0001 Consumers vendor a copy instead of fetching at build time
 
 - Status: accepted

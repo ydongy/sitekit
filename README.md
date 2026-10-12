@@ -1,10 +1,13 @@
-<!-- template: library/README.md v1 -->
 # sitekit
 
-Shared generator and checks for ydongy's static product websites. Python standard library only;
-the output is plain HTML committed to each site repository.
+[![CI](https://github.com/ydongy/sitekit/actions/workflows/ci.yml/badge.svg)](https://github.com/ydongy/sitekit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/ydongy/sitekit)](https://github.com/ydongy/sitekit/releases)
 
-## What is here
+Shared generator and checks for static, multilingual product websites. Python standard library only; the
+output is plain HTML committed to each site repository.
+
+## Features
 
 | Path | Purpose |
 |---|---|
@@ -12,9 +15,12 @@ the output is plain HTML committed to each site repository.
 | `sitekit/check_i18n.py` | Every language against English: structure, HTML tags, links, placeholders, no dashes; optional `i18n/check-config.json` |
 | `sitekit/check_site.py` | Every language has every page, links and anchors resolve, nothing violates the Content-Security-Policy |
 | `sitekit/preview.py` | Local server that behaves like Cloudflare static assets |
-| `vendor.sh` | Copies `sitekit/` into a site repository as `scripts/sitekit/` and records the commit in `VERSION` |
+| `vendor.sh` | Copies `sitekit/` into a site repository as `scripts/sitekit/` |
 
-## Using it
+## Quick start
+
+Requires Python 3.10 or newer (CI runs 3.12) and bash. There is nothing to install: sitekit is not published to
+a package index. Consumers vendor a copy of it.
 
 ```bash
 # in the site repository
@@ -22,17 +28,34 @@ the output is plain HTML committed to each site repository.
 python3 scripts/sitekit/check_i18n.py
 python3 scripts/build.py
 python3 scripts/sitekit/check_site.py
-python3 scripts/check_facts.py
 ```
 
-A site owns its copy (`i18n/`, `changelog.json`), its styles and assets, and `scripts/build.py`: a `Site(...)`
-and a `Page` subclass implementing `home()`. Facts checks stay in the site as `scripts/check_facts.py`.
+`vendor.sh <site-repo>` replaces `<site-repo>/scripts/sitekit/` with the `.py` files from `sitekit/` and writes
+`scripts/sitekit/VERSION`. That file holds the sitekit **git commit hash** the copy came from (plus
+`(uncommitted changes)` if the working tree was dirty). It records provenance of the vendored copy and is
+independent of sitekit's release version (`vX.Y.Z` tags).
 
-## Changing it
+## Usage
 
-Change shared behaviour here, record why in `docs/adr/`, add a line to `CHANGELOG.md`, then run `vendor.sh` in
-each site in its own pull request. Every site's `public/` must stay reproducible: its CI rebuilds and
-requires no diff.
+A site owns its copy of `i18n/` and `changelog.json`, its styles and assets, and `scripts/build.py`: a
+`Site(...)` and a `Page` subclass implementing `home()`. Per-product differences are hooks on `Page` or fields
+on `Site`. See [docs/design.md](docs/design.md) for the architecture and extension points, and
+[docs/adr/](docs/adr/) for the decisions behind it.
+
+## Development
+
+```bash
+python3 -m compileall -q sitekit
+python3 -m unittest discover -s tests -v
+```
+
+To test a behaviour change end to end, vendor it into a site repository on a branch and run that site's build
+and checks; a refactor must leave the site's `public/` byte-identical.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Releases are prepared by
+[release-please](https://github.com/googleapis/release-please) from Conventional Commits.
 
 ## License
 

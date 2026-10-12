@@ -5,15 +5,25 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
-  docs:
-    uses: ydongy/.github/.github/workflows/docs-check.yml@6b48552c969c28a954498123bb502a556f8eed79
-    with:
-      handbook-ref: 6b48552c969c28a954498123bb502a556f8eed79
-  python:
-    name: Python compiles
+  test:
+    name: Python ${{ matrix.python }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    strategy:
+      matrix:
+        python: ["3.10", "3.12"]
     steps:
       - uses: actions/checkout@v5
-      - run: python3 -m compileall -q sitekit
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m compileall -q sitekit
+      - run: python -m unittest discover -s tests -v

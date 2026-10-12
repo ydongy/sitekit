@@ -1,4 +1,3 @@
-<!-- template: library/design.md v1 -->
 # sitekit design
 
 ## Architecture
