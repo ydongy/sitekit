@@ -23,8 +23,10 @@ def resolve(url_path: str):
     if path.endswith("/") and clean != "/":
         clean += "/"
     base = os.path.realpath(PUB)
+    if clean == "/":
+        return clean, Path(base)
     full = os.path.normpath(os.path.join(base, clean.lstrip("/")))
-    if full != base and not full.startswith(base + os.sep):
+    if not full.startswith(base + os.sep):
         return None
     return clean, Path(full)
 
@@ -56,7 +58,7 @@ class Handler(SimpleHTTPRequestHandler):
         path, target = resolved
         if target.is_dir() and not path.endswith("/"):
             self.send_response(301)
-            self.send_header("Location", quote(path + "/"))  # normalized, inside public/, percent-encoded
+            self.send_header("Location", quote(path + "/").replace("\n", "").replace("\r", ""))  # no line breaks
             self.end_headers()
             return
         page = target.with_name(target.name + ".html")
