@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  docs:
+    uses: ydongy/.github/.github/workflows/docs-check.yml@6b48552c969c28a954498123bb502a556f8eed79
+    with:
+      handbook-ref: 6b48552c969c28a954498123bb502a556f8eed79
+  python:
+    name: Python compiles
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - run: python3 -m compileall -q sitekit
