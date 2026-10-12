@@ -1,26 +1,33 @@
+<div align="center">
+
 # sitekit
 
+Shared generator and checks for static, multilingual product websites.
+
 [![CI](https://github.com/ydongy/sitekit/actions/workflows/ci.yml/badge.svg)](https://github.com/ydongy/sitekit/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/ydongy/sitekit)](https://github.com/ydongy/sitekit/releases)
 
-Shared generator and checks for static, multilingual product websites. Python standard library only; the
-output is plain HTML committed to each site repository.
+**English** · [简体中文](README.zh-CN.md)
+
+</div>
+
+Python standard library only; the output is plain HTML committed to each site repository.
 
 ## Features
 
-| Path | Purpose |
-|---|---|
-| `sitekit/core.py` | `Site` settings, the `Page` base class (head with canonical, hreflang and Open Graph; header; footer; FAQ; legal pages; changelog), and `build()` which writes every page, `404.html`, `lang.js`, `sitemap.xml` and `robots.txt` |
-| `sitekit/check_i18n.py` | Every language against English: structure, HTML tags, links, placeholders, no dashes; optional `i18n/check-config.json` |
-| `sitekit/check_site.py` | Every language has every page, links and anchors resolve, nothing violates the Content-Security-Policy |
-| `sitekit/preview.py` | Local server that behaves like Cloudflare static assets |
-| `vendor.sh` | Copies `sitekit/` into a site repository as `scripts/sitekit/` |
+- `sitekit/core.py`: `Site` settings, the `Page` base class (head with canonical, hreflang and Open Graph; header; footer; FAQ; legal pages; changelog) and `build()`, which writes every page, `404.html`, `lang.js`, `sitemap.xml` and `robots.txt`.
+- `sitekit/check_i18n.py`: checks every language against English (structure, HTML tags, links, placeholders, no dashes); optional `i18n/check-config.json`.
+- `sitekit/check_site.py`: every language has every page, links and anchors resolve, nothing violates the Content-Security-Policy.
+- `sitekit/preview.py`: local server that behaves like Cloudflare static assets.
+- `vendor.sh`: copies `sitekit/` into a site repository as `scripts/sitekit/`.
+
+## Requirements
+
+Python 3.10 or newer (CI runs 3.12) and bash. Nothing to install: sitekit is not published to a package index.
+Consumers vendor a copy of it.
 
 ## Quick start
-
-Requires Python 3.10 or newer (CI runs 3.12) and bash. There is nothing to install: sitekit is not published to
-a package index. Consumers vendor a copy of it.
 
 ```bash
 # in the site repository
@@ -42,6 +49,12 @@ A site owns its copy of `i18n/` and `changelog.json`, its styles and assets, and
 on `Site`. See [docs/design.md](docs/design.md) for the architecture and extension points, and
 [docs/adr/](docs/adr/) for the decisions behind it.
 
+Preview a built site locally (serves `public/` of the site repository, default port 8765):
+
+```bash
+python3 scripts/sitekit/preview.py [port]
+```
+
 ## Development
 
 ```bash
@@ -54,8 +67,14 @@ and checks; a refactor must leave the site's `public/` byte-identical.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Releases are prepared by
-[release-please](https://github.com/googleapis/release-please) from Conventional Commits.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Commit messages and pull request titles follow
+[Conventional Commits](https://www.conventionalcommits.org/); releases are prepared by
+[release-please](https://github.com/googleapis/release-please) from them.
+
+## Security
+
+Report vulnerabilities privately via GitHub Security, "Report a vulnerability":
+[open an advisory](https://github.com/ydongy/sitekit/security/advisories/new).
 
 ## License
 
