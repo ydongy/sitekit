@@ -1,19 +1,37 @@
 name: release-please
 
+# Opens and updates the release pull request, and tags and publishes the release when it is merged.
+# It runs with a short-lived token of the account's release GitHub App (secrets RELEASE_APP_CLIENT_ID and
+# RELEASE_APP_PRIVATE_KEY), not GITHUB_TOKEN: pull requests opened with GITHUB_TOKEN do not start the CI and
+# PR title checks that the main ruleset requires.
+
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: release-please
+  cancel-in-progress: false
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
+      - id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          repositories: sitekit
+          permission-contents: write
+          permission-pull-requests: write
       - uses: googleapis/release-please-action@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
