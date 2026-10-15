@@ -1,6 +1,7 @@
 # Contributing to sitekit
 
-Open an issue before starting a large change. Small fixes can go straight to a pull request.
+Issues and pull requests may be written in English or Simplified Chinese. Open an issue before starting a large
+change. Small fixes can go straight to a pull request.
 
 ## Setup
 

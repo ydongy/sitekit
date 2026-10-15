@@ -8,10 +8,10 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
 
-[*.py]
+[{*.py,*.swift}]
 indent_size = 4
 
-[Makefile]
+[{Makefile,*.go}]
 indent_style = tab
 
 [*.md]

@@ -24,7 +24,7 @@ Python standard library only; the output is plain HTML committed to each site re
 
 ## Requirements
 
-Python 3.10 or newer (CI runs 3.12) and bash. Nothing to install: sitekit is not published to a package index.
+Python 3.10 or newer (CI runs 3.10 and 3.12) and bash. Nothing to install: sitekit is not published to a package index.
 Consumers vendor a copy of it.
 
 ## Quick start
