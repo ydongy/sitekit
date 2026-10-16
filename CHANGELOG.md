@@ -3,6 +3,13 @@
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Entries say what changes for a
 consuming site.
 
+## [0.1.4](https://github.com/ydongy/sitekit/compare/v0.1.3...v0.1.4) (2026-10-15)
+
+
+### Documentation
+
+* align the repository with the account standard ([#16](https://github.com/ydongy/sitekit/issues/16)) ([17ab927](https://github.com/ydongy/sitekit/commit/17ab927d4b26efb9cebc704b4e55aabe6d5cd687))
+
 ## [0.1.3](https://github.com/ydongy/sitekit/compare/v0.1.2...v0.1.3) (2026-10-12)
 
 
